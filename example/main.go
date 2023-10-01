@@ -12,9 +12,9 @@ import (
 
 	"github.com/cwbriscoe/goutil/compress"
 	"github.com/cwbriscoe/goutil/net"
-	server "github.com/cwbriscoe/goweb"
 	"github.com/cwbriscoe/goweb/config"
 	"github.com/cwbriscoe/goweb/limiter"
+	"github.com/cwbriscoe/goweb/server"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -161,6 +161,7 @@ func (w *WebIndex) SetUp(res *Resources) {
 }
 
 // Get retrieves information about a repo
-func (_ *WebIndex) Get(_ context.Context, _ string) ([]byte, error) {
-	return []byte("Hello World"), nil
+func (w *WebIndex) Get(_ context.Context, key string) ([]byte, error) {
+	resp := "prefix: " + w.prefix + ", key: " + key + "\n<h1>Hello World</h1>\n"
+	return []byte(resp), nil
 }
