@@ -1,3 +1,6 @@
+// Copyright 2023 Christopher Briscoe.  All rights reserved.
+
+// Package config loads a config file with settings to start a web server/app
 package config
 
 import (

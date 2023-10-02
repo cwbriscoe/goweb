@@ -1,3 +1,6 @@
+// Copyright 2023 Christopher Briscoe.  All rights reserved.
+
+// Package job is used to run a daemon to run batch jobs on a schedule
 package job
 
 import (

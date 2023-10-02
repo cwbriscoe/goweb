@@ -1,3 +1,6 @@
+// Copyright 2023 Christopher Briscoe.  All rights reserved.
+
+// Package limiter provides a mechanism to throttle incoming requests
 package limiter
 
 import (

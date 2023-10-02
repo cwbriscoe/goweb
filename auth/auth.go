@@ -1,3 +1,6 @@
+// Copyright 2023 Christopher Briscoe.  All rights reserved.
+
+// Package auth is for authenticating web based users and sessions
 package auth
 
 import (

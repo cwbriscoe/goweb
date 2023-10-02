@@ -1,3 +1,6 @@
+// Copyright 2023 Christopher Briscoe.  All rights reserved.
+
+// Package main is an example of using the other packages in the repo
 package main
 
 import (

@@ -1,3 +1,6 @@
+// Copyright 2023 Christopher Briscoe.  All rights reserved.
+
+// Package tracker is used to save a tracking cookie to web sessions
 package tracker
 
 import (

@@ -1,3 +1,6 @@
+// Copyright 2023 Christopher Briscoe.  All rights reserved.
+
+// Package server starts a web server with some preset routes and configuration
 package server
 
 import (
