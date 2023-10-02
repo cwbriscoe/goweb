@@ -3,23 +3,25 @@
 package auth
 
 import (
-	"github.com/jackc/pgx"
+	"context"
+
+	"github.com/jackc/pgx/v5"
 )
 
 // CreateSchema will create the auth schema and associated tables needed
 // for this package to run
-func CreateSchema(conn *pgx.Conn) error {
+func CreateSchema(ctx context.Context, conn *pgx.Conn) error {
 	var sql string
 	var err error
 
 	sql = "drop schema if exists auth cascade;"
-	_, err = conn.Exec(sql)
+	_, err = conn.Exec(ctx, sql)
 	if err != nil {
 		return err
 	}
 
-	sql = "create schema auth current_role;"
-	_, err = conn.Exec(sql)
+	sql = "create schema auth authorization current_role;"
+	_, err = conn.Exec(ctx, sql)
 	if err != nil {
 		return err
 	}
@@ -38,14 +40,14 @@ CREATE TABLE auth.user (
 );
 CREATE UNIQUE INDEX auth_email_idx ON auth.user USING btree (email);
 CREATE UNIQUE INDEX auth_lname_idx ON auth.user USING btree (lname);
-CREATE UNIQUE INDEX auth_name_idx ON auth.user USING btree (name); `
-	_, err = conn.Exec(sql)
+CREATE UNIQUE INDEX auth_name_idx ON auth.user USING btree (name);`
+	_, err = conn.Exec(ctx, sql)
 	if err != nil {
 		return err
 	}
 
 	sql = "grant select, insert, update on table auth.user to api;"
-	_, err = conn.Exec(sql)
+	_, err = conn.Exec(ctx, sql)
 	if err != nil {
 		return err
 	}
@@ -59,19 +61,19 @@ CREATE UNIQUE INDEX auth_name_idx ON auth.user USING btree (name); `
 		last_used_ts timestamptz NOT NULL,
 		CONSTRAINT sess_pk PRIMARY KEY (id, auth_id)
 	);`
-	_, err = conn.Exec(sql)
+	_, err = conn.Exec(ctx, sql)
 	if err != nil {
 		return err
 	}
 
 	sql = "grant select, insert, update, delete on table auth.sess to api;"
-	_, err = conn.Exec(sql)
+	_, err = conn.Exec(ctx, sql)
 	if err != nil {
 		return err
 	}
 
-	sql = "ALTER TABLE usr.sess ADD CONSTRAINT sess_fk FOREIGN KEY (auth_id) REFERENCES usr.auth(id) ON DELETE CASCADE;"
-	_, err = conn.Exec(sql)
+	sql = "ALTER TABLE auth.sess ADD CONSTRAINT sess_fk FOREIGN KEY (auth_id) REFERENCES auth.user(id) ON DELETE CASCADE;"
+	_, err = conn.Exec(ctx, sql)
 	if err != nil {
 		return err
 	}
