@@ -25,7 +25,7 @@ require (
 	github.com/mattn/go-isatty v0.0.19 // indirect
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha // indirect
 	github.com/rs/zerolog v1.31.0 // indirect
-	golang.org/x/sync v0.1.0 // indirect
+	golang.org/x/sync v0.3.0 // indirect
 	golang.org/x/sys v0.12.0 // indirect
 	golang.org/x/text v0.13.0 // indirect
 )
