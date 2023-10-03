@@ -341,9 +341,11 @@ func (m *Manager) markAbandoned() error {
 	return rows.Err()
 }
 
-/*******************************************************************************
+/*
+*******************************************************************************
 Job utility functions that can be called from running jobs (goroutines)
-*******************************************************************************/
+*******************************************************************************
+*/
 
 // LogMultiLineString prints out a multiline string and
 // prints a line number for each line

@@ -21,9 +21,11 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-/*******************************************************************************
+/*
+*******************************************************************************
 MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN
-*******************************************************************************/
+*******************************************************************************
+*/
 
 type api struct {
 	svr *server.Server
@@ -104,9 +106,11 @@ func (a *api) setupRoutes() {
 	a.svr.Router.HandlerFunc("GET", "/", a.indexPageHandler("index", 5*time.Minute))
 }
 
-/*******************************************************************************
+/*
+********************************************************************************
 LIMITERS LIMITERS LIMITERS LIMITERS LIMITERS LIMITERS LIMITERS LIMITERS LIMITERS
-*******************************************************************************/
+********************************************************************************
+*/
 
 func (a *api) apiLimiter(f http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -118,9 +122,11 @@ func (a *api) apiLimiter(f http.HandlerFunc) http.HandlerFunc {
 	}
 }
 
-/*******************************************************************************
+/*
+********************************************************************************
 WEB WEB WEB WEB WEB WEB WEB WEB WEB WEB WEB WEB WEB WEB WEB WEB WEB WEB WEB WEB
-*******************************************************************************/
+********************************************************************************
+*/
 
 func (a *api) indexPageHandler(group string, cacheDuration time.Duration) http.HandlerFunc {
 	return a.svr.HandlePanic(a.apiLimiter(a.svr.Logger(a.getIndexPage(group, cacheDuration))))
@@ -143,9 +149,11 @@ func (a *api) getIndexPage(group string, cacheDuration time.Duration) http.Handl
 	}
 }
 
-/*******************************************************************************
+/*
+********************************************************************************
 GET GET GET GET GET GET GET GET GET GET GET GET GET GET GET GET GET GET GET GET
-*******************************************************************************/
+********************************************************************************
+*/
 
 // WebIndex struct stores resources needed to build the main site index
 type WebIndex struct {

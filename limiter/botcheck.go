@@ -26,8 +26,8 @@ var validDomains = []string{
 	".yandex.net.",
 	".yandex.ru.",
 	".bot.semrush.com.",
-	//".ptld.qwest.net.", // test
-	//"localhost",        // test
+	// ".ptld.qwest.net.", // test
+	// "localhost",        // test
 }
 
 var uaStrings = []userAgent{
@@ -40,7 +40,7 @@ var uaStrings = []userAgent{
 	{"Yahoo", "yahoo!"},
 	{"Yandex", "yandexbot"},
 	{"Semrush", "semrushbot"},
-	//{"Me", "chrome"}, // test
+	// {"Me", "chrome"}, // test
 }
 
 func (r *Limiter) botLookupBackground(ip, ua string) {
