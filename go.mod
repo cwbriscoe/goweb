@@ -4,7 +4,7 @@ go 1.21.1
 
 require (
 	github.com/cespare/xxhash/v2 v2.2.0
-	github.com/cwbriscoe/goutil v0.0.0-20231001025735-0f68c14b5949
+	github.com/cwbriscoe/goutil v0.0.0-20231003213053-17160adefeed
 	github.com/cwbriscoe/webcache v0.2.0
 	github.com/goccy/go-json v0.10.2
 	github.com/golang-jwt/jwt/v4 v4.5.0

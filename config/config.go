@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/cwbriscoe/goutil/db"
 	"github.com/goccy/go-json"
 )
 
@@ -20,14 +21,6 @@ type cache struct {
 	Buckets  int   `json:"buckets"`
 }
 
-type db struct {
-	Name string `json:"name"`
-	Host string `json:"host"`
-	Port string `json:"port"`
-	User string `json:"user"`
-	Pass string `json:"pass"`
-}
-
 type https struct {
 	Scheme     string `json:"scheme"`
 	Domain     string `json:"domain"`
@@ -38,16 +31,16 @@ type https struct {
 
 // Config store environment information for the currently running app.
 type Config struct {
-	LogConsole  bool     `json:"-"`
-	URLPrefix   string   `json:"-"`
-	Environment string   `json:"environment"`
-	RootDir     string   `json:"rootdir"`
-	LogDir      string   `json:"logdir"`
-	Listen      string   `json:"listen"`
-	Features    features `json:"features"`
-	Cache       cache    `json:"cache"`
-	DB          db       `json:"db"`
-	HTTPS       https    `json:"https"`
+	LogConsole  bool          `json:"-"`
+	URLPrefix   string        `json:"-"`
+	Environment string        `json:"environment"`
+	RootDir     string        `json:"rootdir"`
+	LogDir      string        `json:"logdir"`
+	Listen      string        `json:"listen"`
+	Features    features      `json:"features"`
+	Cache       cache         `json:"cache"`
+	DB          db.PgConnInfo `json:"db"`
+	HTTPS       https         `json:"https"`
 }
 
 // Load loads a config file.
