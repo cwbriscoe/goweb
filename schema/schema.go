@@ -64,7 +64,6 @@ func createSchema(ctx context.Context, conn *pgx.Conn, name string) (*pgx.Conn, 
 
 	row := conn.QueryRow(ctx, "select datname from pg_database where datname = $1;", name)
 	err := row.Scan(&nm)
-
 	if err != nil && err != pgx.ErrNoRows {
 		return nil, err
 	}
@@ -79,6 +78,16 @@ func createSchema(ctx context.Context, conn *pgx.Conn, name string) (*pgx.Conn, 
 	}
 
 	err = createNewDatabase(ctx, conn, name)
+	if err != nil {
+		return nil, err
+	}
+
+	err = CreateRole(ctx, conn, "api")
+	if err != nil {
+		return nil, err
+	}
+
+	err = CreateRole(ctx, conn, "job")
 	if err != nil {
 		return nil, err
 	}
@@ -126,6 +135,34 @@ func createNewDatabase(ctx context.Context, conn *pgx.Conn, name string) error {
 
 	sql := "create database " + name + " template template0;"
 	_, err := conn.Exec(ctx, sql)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// CreateRole creates a role with only login permissions
+func CreateRole(ctx context.Context, conn *pgx.Conn, name string) error {
+	fmt.Println("attempting to create role", name)
+
+	sql := "select 'create role " + name + " with login password ''" + name + "'';'"
+	sql += "where not exists (select from pg_catalog.pg_roles where rolname = '" + name + "');"
+
+	var str string
+	row := conn.QueryRow(ctx, sql)
+	err := row.Scan(&str)
+	if err == pgx.ErrNoRows {
+		fmt.Println("role", name, "already exists")
+		return nil
+	}
+
+	if err != nil {
+		return err
+	}
+
+	fmt.Println("creating role", name)
+	_, err = conn.Exec(ctx, str)
 	if err != nil {
 		return err
 	}
