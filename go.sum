@@ -3,8 +3,8 @@ github.com/andybalholm/brotli v1.0.5/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHG
 github.com/cespare/xxhash/v2 v2.2.0 h1:DC2CZ1Ep5Y4k3ZQ899DldepgrayRUGE6BBZ/cd9Cj44=
 github.com/cespare/xxhash/v2 v2.2.0/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
 github.com/coreos/go-systemd/v22 v22.5.0/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
-github.com/cwbriscoe/goutil v0.0.0-20231003213053-17160adefeed h1:uNdPSsp29gDq45GCWiQWPL0xMQA742T+LpbgxC3vlKs=
-github.com/cwbriscoe/goutil v0.0.0-20231003213053-17160adefeed/go.mod h1:+quHcw11f1uaEIe3vcgpSM3TRyxs16JryoFiW9y2D6w=
+github.com/cwbriscoe/goutil v0.0.0-20231004041107-2e0b845e13e2 h1:Nb+EEUDwbuSVpELH7Flg8wjEQpGLuLIu61Q8ZW3Nlco=
+github.com/cwbriscoe/goutil v0.0.0-20231004041107-2e0b845e13e2/go.mod h1:+quHcw11f1uaEIe3vcgpSM3TRyxs16JryoFiW9y2D6w=
 github.com/cwbriscoe/testy v0.0.0-20200202033126-413de244ac39 h1:MM+n2E9AZwTCYzPmJ5NvTBg4aSL9tKm+D5WgHIy+9as=
 github.com/cwbriscoe/testy v0.0.0-20200202033126-413de244ac39/go.mod h1:fBBPrBmtoyAQVgD5ynw6PQrr2gBP4H5QFEKfT7J5Rvw=
 github.com/cwbriscoe/webcache v0.2.0 h1:N3NiirF/X9YNqGR//zgBRpaPAtXK3rgygehHOwvrzsM=
